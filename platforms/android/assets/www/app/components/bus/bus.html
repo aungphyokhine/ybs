@@ -1,0 +1,55 @@
+﻿
+
+
+
+        <md-list flex="100" style="min-height:100%;width:100%;" >
+    <md-subheader class="md-no-sticky" >ကားလိုင်း</md-subheader>
+            <md-list-item class="md-1-line" layout="row"  flex>
+                <!--<img ng-src="{{b.img}}" style="height:45px;width:45px;" /><div>{{b.name}}</div>-->
+                <div style="background-color:{{ bus.color; }};" class="busno"><span>{{bus.no}}</span></div>
+                <!--<img ng-src="{{bus.img}}" style="width:30px;height:30px;" />--><p style="line-height:1.3em;">{{bus.line}}</p>
+            </md-list-item>
+          
+
+            <md-subheader class="md-no-sticky" style="margin-top:1em;">ပြေးဆွဲသောမှတ်တိုင်များ</md-subheader>
+    <md-list-item ng-repeat="s in viewstops " ng-click="null" flex>
+        <div flex> {{ s.name }}</div>
+        <!--<md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>-->
+        <div layout="row" layout-align="start center" layout-wrap>
+
+            <div ng-repeat="c in s.ts | orderBy : 'no' : 'reverse'" style="background-color:{{c.color}};" class="busnosmall"><span>{{c.no}}</span></div>
+            <!--<img ng-src="{{c.img}}" style="width:20px;height:20px;margin:2px;" title="{{c.stop.name}}" />-->
+
+
+        </div>
+    </md-list-item>
+</md-list>
+
+
+             
+
+
+                <!--<div layout="row" layout-wrap>
+
+                    <div ng-repeat="c in crossbus" style="background-color:{{c.color}};" class="busnosmall"><span>{{c.no}}</span></div>
+                   
+
+                </div>
+
+
+                <div layout="row" layout-wrap>
+
+                    <div ng-repeat="c in nearbus" style="background-color:{{c.color}};" class="busnosmall"><span>{{c.no}}</span></div>
+                  
+                </div>-->
+
+    
+
+    <!--<md-whiteframe layout="column" class="md-whiteframe-1dp" style="margin: 1em; width:500px;max-width:100%; padding:5px;">
+        
+
+</md-whiteframe>-->
+       
+    <!--<md-button  class="md-fab  fixbutton" aria-label="Eat cake" ng-click="gomap()">
+        <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+    </md-button>-->

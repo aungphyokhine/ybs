@@ -1,0 +1,110 @@
+﻿
+<md-subheader class="md-no-sticky" style="margin-bottom:-1em;">ကားလမ်းကြောင်းရှာဖွေရန်</md-subheader>
+<div layout="column"  flex style="padding:1em;min-height:100%;">
+    
+
+    <!--<svg style="margin:2em;" fill="#2196F3" height="70" viewBox="0 0 24 24" width="70" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+    </svg>-->
+    <!--<div layout="row" style="margin:1em;">
+
+        <svg fill="#2196F3" height="70" viewBox="0 0 24 24" width="70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
+        </svg>
+        <svg ng-if="sc" fill="#2196F3" height="30" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+        </svg>
+        <svg ng-if="tc" fill="#2196F3" height="70" viewBox="0 0 24 24" width="70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
+        </svg>
+    </div>-->
+    <div layout="column" style="width:100%;">
+        <md-subheader ng-if="sc" style="margin-left: -16px; ">ထွက်ခွာမည့်မှတ်တိုင်</md-subheader>
+        <div layout="row" layout-align=" start center" ng-if="sc" style="margin-bottom:1em;">
+
+            <div style="background-color:{{ sc.color; }};" class="busno"><span>{{sc.no}}</span></div>
+            <div layout="column" layout-align="center start" flex style="line-height:1.3em;">
+                <div>{{ sc.name }}</div><div>  {{sc.tn}}</div>
+
+            </div>
+            <md-icon style="font-size:1.5em;" ng-click="clearcs()">close</md-icon>
+</div>
+
+        <md-input-container ng-hide="sc">
+            <label>ထွက်ခွာမည့်မှတ်တိုင်</label>
+            <input ng-model="from" class="md-primary" style="margin-bottom:-3em;">
+        </md-input-container>
+        <md-list ng-hide="sc">
+
+            <!--<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>-->
+            <md-list-item layout="row" ng-repeat="fs in fromlist" ng-click="startchoice(fs)" class="stopchoicelst">
+                <div style="background-color:{{ fs.color; }};" class="busno"><span>{{fs.no}}</span></div>
+
+                <div layout="column" class="stopchoice">
+                    <div> {{ fs.name }}</div><div>{{fs.tn}}</div>
+
+
+                </div>
+            </md-list-item>
+        </md-list>
+
+
+
+
+
+
+
+        <md-subheader ng-if="tc" style=" margin-left: -16px;">ရောက်လိုသည့်မှတ်တိုင်</md-subheader>
+        <div layout="row" layout-align=" start center" ng-if="tc">
+            <div style="background-color:{{ tc.color; }};" class="busno"><span>{{tc.no}}</span></div>
+            <div layout="column" layout-align="center start" flex style="line-height:1.3em;">
+                <div>{{ tc.name }}</div><div>  {{tc.tn}}</div>
+
+            </div>
+     
+            <md-icon style="font-size:1.5em;" ng-click="clearct()">close</md-icon>
+        </div>
+
+        <md-input-container ng-hide="tc">
+            <label>ရောက်လိုသည့်မှတ်တိုင်</label>
+            <input ng-model="to">
+        </md-input-container>
+        <md-list ng-hide="tc" style="margin-top:-2em;">
+
+            <!--<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>-->
+            <md-list-item layout="row" ng-repeat="ts in tolist" ng-click="tochoice(ts)" class="stopchoicelst">
+                <div style="background-color:{{ ts.color; }};" class="busno"><span>{{ts.no}}</span></div>
+                <div layout="column" class="stopchoice">
+                    <div> {{ ts.name }}</div>
+                    <div>{{ts.tn}}</div>
+
+                </div>
+
+            </md-list-item>
+        </md-list>
+
+
+
+
+
+    </div>
+    <!--<div id='map' style="margin-top:2em;"></div>-->
+    <div layout="column" layout-align="start end" style="margin-top:1em;" >
+
+        <!--<md-button ng-if="tc != null && sc != null" class="md-fab  fixbutton" aria-label="Eat cake" ng-click="goroute()">
+            <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+        </md-button>-->
+        <div flex></div>
+        <md-button ng-disabled="tc == null || sc == null" class="md-fab md-primary" aria-label="Use Android" ng-click="goroute()">
+            <md-icon><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
+</svg></md-icon>
+        </md-button>
+    </div>
+
+</div>

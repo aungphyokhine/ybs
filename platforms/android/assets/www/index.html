@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html ng-app="ngapp">
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Security-Policy">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-material.min.css">
+    
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700">-->
+      <!--Synaptic-->
+      <!--<script src="assets/lib/require.js"></script>-->
+      <script src="assets/lib/zawgyitouni.js"></script>
+      <!--<script src="assets/lib/data/transits.js"></script>
+      <script src="assets/lib/data/buses.js"></script>
+      <script src="assets/lib/data/paths.js"></script>
+      <script src="assets/lib/data/routes.js"></script>
+      <script src="assets/lib/data/stops.js"></script>-->
+
+
+      <link rel="stylesheet" href="assets/css/leaflet.css" />
+
+      
+
+      <!--<script src="assets/lib/geojson.js"></script>-->
+      <script src="assets/lib/leaflet.js"></script>
+    
+      
+       <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAZJoUZLn0WWG3GvyPDYfa2nZxIh9ZmVc&callback=initMap"
+            async defer></script>-->
+
+    <!--<script>
+          function initMap() {
+              var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 3,
+                  center: { lat: 0, lng: -180 },
+                  mapTypeId: 'terrain'
+              });
+          }
+    </script>-->
+ 
+     
+      <!--<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>-->
+      <!--<script src="assets/lib/require.js"></script>-->
+
+    <!-- AngularJs -->
+    <script type="text/javascript" src="assets/lib/angular.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-aria.min.js"></script>
+    <script type="text/javascript" src="assets/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="assets/lib/ngStorage.min.js"></script>
+
+      <!--<script src="assets/lib/ng-map.js"></script>-->
+     
+    <!-- Angular Material -->
+    <script type="text/javascript" src="assets/lib/angular-material.min.js"></script>
+
+    <!-- Cordova -->
+    <script type="text/javascript" src="assets/lib/ng-cordova.min.js"></script>
+    <!--<script src="cordova.js"></script>-->
+      <!--FB-->
+      <!--<script src="app/fbsdk.js"></script>-->
+      <!--Parse-->
+      <!--<script src="app/parse.min.js"></script>-->
+    <!-- Modules -->
+    <script type="text/javascript" src="app/app.js"></script>
+
+    <!-- Routes -->
+    <script type="text/javascript" src="app/routes.js"></script>
+
+    <!-- Services -->
+    <script type="text/javascript" src="app/shared/shared-service.js"></script>
+
+    <!-- Controllers -->
+      <script type="text/javascript" src="app/components/app-controller.js"></script>
+    <script type="text/javascript" src="app/components/main/main-controller.js"></script>
+      <script src="app/components/bus/bus-controller.js"></script>
+      <script src="app/components/buses/buses-controller.js"></script>
+      <script src="app/components/route/route-controller.js"></script>
+      <script src="app/components/map/map-controller.js"></script>
+      <script src="app/components/stop/stop-controller.js"></script>
+      <script src="app/components/findbus/findbus-controller.js"></script>
+      <script type="text/javascript" src="app/components/stock/stock-controller.js"></script>
+    <title>NgApp</title>
+  </head>
+
+  <body   ng-cloak ng-controller="AppController">
+      <md-toolbar flex style="position: fixed; top: 0; left: 0; right: 0; " >
+          <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+              <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
+                  <md-icon>menu</md-icon>
+              </md-button>
+              <h1 >
+                  <span class="titletext">YBS GUIDE</span>
+              </h1>
+              <md-button class="md-icon-button" aria-label="Menu" ui-sref="stop()">
+                  <md-icon>search</md-icon>
+              </md-button>
+          </div>
+      </md-toolbar>
+      <section layout="row" flex>
+
+          <md-sidenav class="md-sidenav-left" md-component-id="left" style="position: fixed; top: 0; left: 0; right: 0; "
+                      md-disable-backdrop md-whiteframe="4">
+
+              <md-toolbar class="md-theme-indigo" >
+                  <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                      <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleLeft()">
+                          <md-icon>close</md-icon>
+                      </md-button>
+                     <div flex></div>
+                     
+                  </div>
+              </md-toolbar>
+
+              <md-content layout-margin layout="column" layout="start center" ng-click="toggleLeft()">
+                  <md-list flex style="margin-top:3em;">
+                      <!--<md-subheader class="md-no-sticky">ကားလိုင်းများ</md-subheader>-->
+                      <md-list-item class="md-1-line" ui-sref="buses()">
+                          ပြေးဆွဲသော ကားလိုင်းများ
+                      </md-list-item>
+                      <md-list-item class="md-1-line" ui-sref="main()">
+                          ကားလမ်းများမြေပုံ
+                      </md-list-item>
+                      <md-list-item class="md-1-line" ui-sref="stop()">
+                          လမ်းကြောင်းရှာဖွေရန်
+                      </md-list-item>
+                      <md-list-item class="md-1-line" ui-sref="findbus()">
+                          မှတ်တိုင်သို့ရောက်သောကားများ
+                      </md-list-item>
+                  </md-list>
+
+               
+              </md-content>
+
+          </md-sidenav>
+
+          <md-content flex layout="row" layout-align="center start"  style="margin-top: 4em;">
+
+              <ui-view flex></ui-view>
+
+          </md-content>
+
+      </section>
+ 
+   <script>
+       function changecolor(c) {
+           if (c == "blue") {
+               return '#5C6BC0';// "#405caa";
+           }
+           else if (c == "red") {
+               return "#EF5350";//"#f2534d";
+           }
+           else if (c == "green") {
+               return "#26A69A";//"#2c8a6c";
+           }
+           else if (c == "brown") {
+               return '#8D6E63';//"#86603e";
+           }
+           else if (c == "violet") {
+               return "#AB47BC";
+              // return c;//"#96509f";
+           }
+       }
+
+       function tommno(eno) {
+           var mmnoarr = "၀၁၂၃၄၅၆၇၈၉";
+           var enostr = eno + "";
+           var mmstr = "";
+           for (var i = 0 ; i < enostr.length; i++) {
+               var e = enostr[i] * 1;
+               mmstr += mmnoarr[e];
+           }
+           return mmstr;
+       }
+
+       //(function () {
+       //    Array.implement({
+       //        getMatch: function (what) {
+       //            return this.filter(function (el) {
+       //                return el.charAt(0) == what;
+       //                // return el.contains(what); // any position match
+       //            });
+       //        }
+       //    });
+       //})();
+   </script>
+      <script>
+
+    L.LabelOverlay = L.Class.extend({
+        initialize: function(/*LatLng*/ latLng, /*String*/ label, options) {
+            this._latlng = latLng;
+            this._label = label;
+            L.Util.setOptions(this, options);
+        },
+        options: {
+            offset: new L.Point(0, 2)
+        },
+        onAdd: function(map) {
+            this._map = map;
+            if (!this._container) {
+                this._initLayout();
+            }
+            map.getPanes().overlayPane.appendChild(this._container);
+            this._container.innerHTML = this._label;
+            map.on('viewreset', this._reset, this);
+            this._reset();
+        },
+        onRemove: function(map) {
+            map.getPanes().overlayPane.removeChild(this._container);
+            map.off('viewreset', this._reset, this);
+        },
+        _reset: function() {
+            var pos = this._map.latLngToLayerPoint(this._latlng);
+            var op = new L.Point(pos.x + this.options.offset.x, pos.y - this.options.offset.y);
+            L.DomUtil.setPosition(this._container, op);
+        },
+        _initLayout: function() {
+            this._container = L.DomUtil.create('div', 'leaflet-label-overlay');
+        }
+    });
+
+      </script>
+  </body>
+</html>

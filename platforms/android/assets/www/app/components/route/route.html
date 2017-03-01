@@ -1,0 +1,34 @@
+﻿
+
+<div layout="column" flex style="width:100%;max-width:100%;">
+    <md-subheader class="md-no-sticky">သွားရောက်လိုသည့်ခရီး</md-subheader>
+  
+      
+    <md-whiteframe layout="column" flex layout-align="start start" style="padding:0 1em;">
+        <div flex layout="row" layout--align="start center">
+            <div style="background-color:{{tp[0].color }};" class="busno"><span>{{tp[0].no}}</span></div><div flex>{{tp[0].name}}</div>
+        </div>
+        <div flex layout="row" layout-align="start center" style="margin:0.3em 0;">
+            <div style="background-color:{{tp[1].color }};" class="busno"><span>{{tp[1].no}}</span></div> <div flex>{{tp[1].name}}</div>
+        </div>
+    </md-whiteframe>   
+   
+
+    <md-subheader class="md-no-sticky">သွားရောက်နိုင်မည့်လမ်းကြောင်း</md-subheader>
+    <md-subheader ng-if="nodata" class="md-no-sticky">လမ်းကြောင်းရှာမတွေ့ပါ</md-subheader>
+     
+    <md-whiteframe ng-repeat="g in showroute  track by $index" layout="column" style=" padding:0 1em;">
+        <div layout="row" layout-align="start center">
+            <div style="background-color:{{g.color }};" class="busno"><span>{{g.no}}</span></div>
+            <p flex style="line-height:1.3em;">{{g.name}}</p>
+        </div>
+
+    </md-whiteframe>
+   
+    <!--<md-whiteframe layout="column" class="md-whiteframe-1dp" style="margin: 1em; width:500px;max-width:100%; padding:5px;">
+        
+
+</md-whiteframe>-->
+       
+
+</div>

@@ -1,0 +1,17 @@
+﻿
+
+<div layout="column"  flex style="min-height:100%;margin-top:1em;">
+
+    <!--<md-whiteframe layout="row" layout-align="start center" ng-repeat="bus in buses" class="md-whiteframe-1dp" style="margin:0; width:500px;max-width:100%; padding:1em;cursor:pointer;"
+                   ui-sref="bus({ bus:bus})">
+        
+    </md-whiteframe>-->
+    <md-list flex>
+        <!--<md-subheader class="md-no-sticky">ကားလိုင်းများ</md-subheader>-->
+        <md-list-item class="md-1-line" ng-repeat="bus in buses" ng-click="null" ui-sref="bus({ bus:bus})" style="margin-bottom:1em;">
+            <div style="background-color:{{bus.color}};" class="busno"><span>{{bus.no}}</span></div>
+            <!--<img ng-src="{{bus.img}}" style="width:30px;height:30px;" />--><div style="line-height:1.3em;">{{bus.line}}</div>
+        </md-list-item>
+        </md-list>
+
+</div>

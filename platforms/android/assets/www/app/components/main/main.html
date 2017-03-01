@@ -1,0 +1,58 @@
+﻿
+
+<div layout="column"  flex style="min-height: 100%; width: 100%;">
+    <!--<md-whiteframe layout="row" layout-align="start center" ng-repeat="s in tp" class="md-whiteframe-1dp" style="margin: 10px; width:500px;max-width:100%; padding:5px;cursor:pointer;">
+        {{s.name}}
+    </md-whiteframe>-->
+  
+    <div ng-if="tp[0]" layout="row" layout-align="start center " flex style="padding: 0 0.5em; margin-bottom: 0.5em;margin-top:1em;">
+       
+        <div style="background-color:{{tp [0].color; }};" class="busno"><span>{{tp[0].no}}</span></div>
+        <div layout="column" flex style="line-height:1.3em;">
+            <!--<div>ထွက်ခွာမည့်မှတ်တိုင်</div>-->
+            <div>{{ tp[0].name }}</div>
+
+        </div>
+        <md-icon style="font-size:1.5em;" ng-click="clears(0)">close</md-icon>
+
+    </div>
+ 
+    <div ng-if="tp[1]" layout="row" layout-align="start center" flex style="padding: 0 0.5em; margin-bottom: 0.5em;">
+       
+        <div style="background-color:{{tp [1].color; }};" class="busno"><span>{{tp[1].no}}</span></div>
+        <div layout="column" flex style="line-height:1.3em;">
+            <!--<div>
+                ရောက်လိုသည့်မှတ်တိုင်
+            </div>-->
+            <div>{{ tp[1].name }}</div>
+
+        </div>
+        <md-icon style="font-size:1.5em;" ng-click="clears(1)">close</md-icon>
+
+    </div>
+    <div ng-if="tp[1]" layout="column" layout-align="start end" style="margin-bottom:-40px;z-index:100000000;margin-top:-10px;">
+
+        <!--<md-button ng-if="tc != null && sc != null" class="md-fab  fixbutton" aria-label="Eat cake" ng-click="goroute()">
+            <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+        </md-button>-->
+        <div flex></div>
+        <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="goroute()">
+            <md-icon><svg  height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
+</svg></md-icon>
+        </md-button>
+    </div>
+
+    <!--<md-button ng-if="tp[1]" class="md-raised md-primary" ng-click="goroute()">စီးရမည့်ကားများကိုရှာဖွေရန်</md-button>-->
+    
+       
+            
+    <div ng-show="mapready" id="mapcon" flex style="padding:0.5em;padding-top:0;">
+        <div id='map'></div>
+    </div>
+            
+
+   
+
+</div>

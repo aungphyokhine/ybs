@@ -1,0 +1,67 @@
+﻿
+
+<div layout="column"  flex style="min-height:100%;width:100%;">
+    <md-subheader class="md-no-sticky" flex>မှတ်တိုင်သို့ရောက်သောကားများ</md-subheader>
+
+      
+                <div layout="column" style="padding:1em;">
+                    <label ng-if="sc" style="margin-bottom:1em;">ရောက်ရှိသောကားနံပါတ်များ</label>
+                    <div layout="row" layout-align="start center " ng-if="sc" style="line-height:1.3em;">
+
+                        <div style="background-color:{{ sc.color; }};" class="busno"><span>{{sc.no}}</span></div>
+                        <div layout="column" flex>
+                            <div>{{ sc.name }}</div><div>  {{sc.tn}}</div>
+
+                        </div>
+              
+                        <md-icon style="font-size:1em;" ng-click="clearcs()">close</md-icon>
+                    </div>
+
+                    <div layout="row" ng-if="sc" style="margin-top:1em;">
+                   
+                        <div ng-repeat="c in tsstops" style="background-color:{{c.color}};" class="busno"><span>{{c.no}}</span></div>
+                    </div>
+                   
+                    <label ng-if="nbstops.length>0" style="margin:1em 0;">အနီးအနားမှတ်တိုင်သို့ရောက်သောကားများ</label>
+                    <div layout="row" ng-if="sc">
+
+                        <div ng-repeat="c in nbstops" style="background-color:{{c.color}};" class="busno"><span>{{c.no}}</span></div>
+                    </div>
+
+
+                        <md-input-container ng-hide="sc">
+                            <label>မှတ်တိုင်နာမည်ရိုက်ပါ</label>
+                            <input ng-model="from" style="margin-bottom:-2em;">
+                        </md-input-container>
+                        <md-list ng-hide="sc">
+
+                            <!--<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>-->
+                            <md-list-item layout="row" ng-repeat="fs in fromlist" ng-click="startchoice(fs)" class="stopchoicelst">
+                                <div style="background-color:{{ fs.color; }};" class="busno"><span>{{fs.no}}</span></div>
+
+                                <div layout="column" class="stopchoice">
+                                    <div> {{ fs.name }}</div><div>{{fs.tn}}</div>
+
+
+                                </div>
+                            </md-list-item>
+                        </md-list>
+
+
+
+
+
+
+
+                    </div>
+          
+       
+       
+    <md-button ng-if="tc != null && sc != null" class="md-fab  fixbutton" aria-label="Eat cake" ng-click="goroute()">
+        <md-icon md-svg-src="img/icons/cake.svg"></md-icon>
+    </md-button>
+
+  
+       
+
+</div>
